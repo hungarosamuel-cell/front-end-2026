@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <style>
+    body{
+        margin: 0;
+        font-family: 'Segoe UI';
+        background-color: #f4f7fb;
+        color: #222;
+        line-height: 1.6;
+    }
+    h2{
+        border-left: 6px solid #6094ef;
+        padding-left: 10px;
+    }
+    table{
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    th{
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    mark{
+        background-color: #fff4c2;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+    .header{
+        background: linear-gradient(135deg, #6094ef, #3b6fd9);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .header h1{
+        margin-bottom: 10px;
+        font-size: 2.2rem;
+    }
+    .header p{
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    nav a{
+        text-decoration: none;
+        color: #3b6fd9;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    nav a:hover{
+        color: #6094ef;
+        transform: scale(1.05);
+    }
+    #main{
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    section{
+        background-color: white;
+        padding: 30px;
+        margin-bottom: 40px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+    .tabela-interação-caixa-eletrônico {
+        border-collapse: collapse;
+        width: 65%;
+        font-family: Arial, sans-serif;
+        background-color: #BFDDF3;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .tabela-interação-caixa-eletrônico th {
+        background-color: #6094ef;
+        color: black;
+        padding: 12px;
+        text-align: left;
+    }
+    .tabela-interação-caixa-eletrônico td {
+        padding: 12px;
+        border-bottom: 1px solid #eeeeee;
+    }
+    .tabela-interação-caixa-eletrônico tr:hover {
+        background-color: #f5f5f5;
+    }
+    .tabela-interação-caixa-eletrônico tr:last-child td {
+        border-bottom: none;
+    }   
+    .conteudo-visual {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .conteudo-visual img {
+        width: 55%;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .conteudo-visual img:hover{
+        transform: scale(1.03);
+    }
+    img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ul{
+        list-style-type: circle;
+    }
+    .codigo{
+        background-color: #1e1e1e;
+        color: #f1f1f1;
+        border-radius: 10px;
+        padding: 20px;
+        font-size: 16px;
+    }
+    .azul{ color: lightskyblue;}
+    .verde{ color: lightgreen;}
+    .vermelho{ color: lightcoral;}
+    .azul-escuro{color: rgb(22, 22, 213);}
+    .rodape{
+        background: linear-gradient(135deg, #3b6fd9, #6094ef);
+        color: white;
+        padding: 15px 7px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .rodape h3{
+        margin-bottom: 15px;
+    }
+    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="widht=device-widht, inital-scale=1.0">
+	<title>Lógica de programação</title>
+</head>
+<body>
+    <div class="header">
+        <header>
+            <h1>Lógica de programação</h1>
+            <p>Bem vindo ao material de estudo sobre Lógica de Programação básica</p>
+            <hr>
+            <p>Esse material tem como o objetivo de ensinar o básico sobre lógica de programação a pessoas que nunca viram ou não escutaram sobre. Utilizaremos a linguagem portugol como base pela sua semelhança com a língua portuguesa.</p>
+        </header>
+    </div>
+    <nav>
+        <a href="#entrada-processamento-saida" target="_self">Entrada, processamento e saída</a>
+        <a href="#estrutura-condicional" target="_self">Estrutura condicional</a>
+        <a href="#laços-de-repetição" target="_self">Laços de repetição</a>         
+    </nav>
+    <div id="main">
+    <section id="entrada-processamento-saida">
+        <h2>Entrada, processamento e saída</h2>
+        <h3>Algoritmo</h3>
+        <p>Quando vamos exercer uma tarefa, nós pensamos em todos os passos necessário para concluir ela. Para os computadores segue na mesma lógica, precisamos falar todos os passos necessário 
+            para que ele faça alguma coisa, isso se chama entrada de dados e processamento dele, e o que ele entregar é a saída. Toda a descrição de ações que passamos, 
+            fazendo com que a maquina obedeça, resultando uma sucessão de passos finitos para atingir um objetivo, se chama algoritmo, ou seja, todo o seu codigo fica em um algoritmo.</p>
+            <p>Para ficar mais claro, vamos pensar na seguinte situação, você foi ao banco e está interagindo com um caixa eletrônico e está seguindo os seguintes passos:</p>
+        <div class="conteudo-visual">
+        
+            <table class="tabela-interação-caixa-eletrônico">
+            <tr>
+                <th>Interação</th>
+                <th>Tipo</th>
+            </tr>
+            <tr>
+                <td>Inserir cartão</td>
+                <td>Entrada de variavel</td>
+            </tr>
+            <tr>
+                <td>Digite sua senha</td>
+                <td>Saída de constante</td>
+            </tr>
+            <tr>
+                <td>Digitar senha</td>
+                <td>Entrada de variavel</td>
+            </tr>
+            <tr>
+                <td>Senha inválida</td>
+                <td>Saída de constante</td>
+            </tr>
+            <tr>
+                <td>Opções do menu</td>
+                <td>Saída de constante</td>
+            </tr>
+            <tr>
+                <td>Selecionar saldo</td>
+                <td>Entrada de variavel</td>
+            </tr>
+            <tr>
+                <td>"Seu saldo é",Saldo</td>
+                <td>Saída de constante e variavel</td>
+            </tr>
+            </table>
+            <img src="https://img.freepik.com/fotos-gratis/pessoas-esperando-para-conseguir-dinheiro-de-caixa-automatico-as-pessoas-retiraram-dinheiro-do-conceito-de-caixa-eletronico_1150-13566.jpg?semt=ais_rp_progressive&w=740&q=80", alt="Imagem ilustrativa">
+        </div>
+        <h3>Variáveis e Constantes</h3>
+        <h4>Mas o que são as variáveis e constantes?</h4>
+        <p> As <mark>váriáveis</mark> são utilizadas para guardar algum tipo de informação na 
+            memória RAM. Toda vez que declaramos uma variável, estamos reservando um espaço na memória para 
+            uso futuro, sofrendo alterações a partir com os dados do usuário.</p>
+            <p>Já as <mark>constantes</mark>, como o nome já diz, não sofrem alterações no decorrer do algoritmo. Serve para apresentar resultados 
+            estaticos ao usuário ou controlar internamente valores que nunca serão alterados.</p>
+        <h4> Tipo de dados(variáveis e constantes)</h4>
+        <p>Os dados utilizados no computador devem ser abstraídos para serem processados. Podem ser categorizados em três
+            tipos primitivos:<br>-Numéricos(inteiros ou reais);<br>-Caracteres(alfabeticos ou alfanuméricos);<br>
+            -Lógicos(verdadeiros ou falsos).</p>
+        <p><b>Dados numéricos inteiros</b><br>São números positivos e negativos pertencentes ao conjunto numérico inteiros, excluindo
+        qualquer numero fracionado. Ex: 35, 0, -197, 2168, -5087</p>
+        <p><b> Dados numéricos reais</b><br>São dados positivos e negativos pertencentes ao conjunto de números reais.Ex: -87.2, 0, 67, 19.002, 0.7</p>
+        <p><b>Dados caracteres</b><br>São dados delimitados por aspas inglesas(""). Esse tipo é poder conter qualquer coisa tipo de caracter (A até Z),
+        (0 a 9), símbolos, caracter especial, etc. Ex:"Av. Brasil, 1225", "(11) 99472-9037", "Masculino", "87090-120"</p>
+        <p><b>Dados lógicos</b><br>São lógicos os dados com valores binários como sim e não, verdadeiro e falso, 1 e 0, entre outros, e apenas um dos valores pode ser escolhido. 
+            Utilizaremos os valores aqui como VERDADEIRO/FALSO.O tipo de dado lógico também é conhecido como booleano — homenagem ao matemático George Boole.</p>
+        <h3>Identificadores</h3>
+        <p>Para que possamos utilizar variáveis, é necessário atribuirmos uma identificação (nome dado à variável).Os identificadores devem obedecer a algumas regras básicas e outras específicas (de acordo com a linguagem de programação utilizada).<br>
+        <b>Regras Básicas:</b><br>
+        Não utilizar caracteres especiais (@, %, $, #, etc.), exceto o underline (_);<br>
+        Não iniciar identificadores com números;<br>
+        Não utilizar palavras reservadas (VERDADEIRO, INICIO, LEIA, ESCREVA, etc.);<br>
+        Não utilizar caractere de espaço para unir palavras (utilize o underline).<br>
+        Dica Prática: Imagine que o identificador é a "etiqueta" de uma caixa. Para o computador não se confundir, 
+        essa etiqueta precisa ser clara e seguir essas regrinhas de etiqueta digital.</p>
+        <p><b>Exemplos VÁLIDOS</b><br>
+        Estes nomes seguem todas as regras e podem ser usados sem problemas:<br>
+        nome_usuario (Usa underline para separar palavras);<br>
+        idade2 (Números são permitidos, desde que não no início);<br>
+        valorTotal (Letras maiúsculas e minúsculas são aceitas);<br>
+        _status (O underline é o único caractere especial permitido no início).<br>
+        <b>Exemplos INVÁLIDOS</b><br>
+        Estes nomes causariam erro no seu código:<br>
+        2ano — Erro: Começa com um número;<br>
+        nome usuario — Erro: Contém um espaço vazio;<br>
+        valor% — Erro: Contém o caractere especial %;<br>
+        ESCREVA — Erro: É uma palavra reservada (comando do sistema);<br>
+        e-mail — Erro: O hífen - é considerado um caractere especial/operador matemático; o correto seria e_mail.</p>
+        <h3>Expressões aritiméticas e lógicas</h3>
+        <p>Uma operação muito comum na programação de computadores é a expressão aritimética para estabelecer processamento matemático e lógico para efetuar comparações. 
+            Sendo os operadores mais usados a multiplicação, representado pelo *, divisão, /, adição, +, subtração, -.<br>
+            Uma expressão relacional é a comparação entre dois valores do mesmo tipo, utilizando variáveis e constantes. São eles: <, menor que, <=, menor ou igual que, 
+            >, maior que, >=, maior ou igual que, <>, diferente que, =, igual.O sinal de atribuição permite que seja atribuido um valor a variavel onde a natureza desse valor seja 
+            compativel com o tipo da variavel. Ex: A fórmula A=B+C é representado em algoritmo por: A<- B+C, dizemos que a variavel A recebe B mais C.<br>
+            Na programação utilizamos operadores lógicos que foram definidos em três conectivos da Álgebra, sendo eles: E - utilizado em conjunções, OU - utilizado em disjunções, 
+            NÃO - utilizado em negação. Segue a tabela como exemplo:</p>
+            <img src="https://static.todamateria.com.br/upload/ta/be/tabelaverdadeconectivo1-cke.jpg", alt="Tabela verdade">
+    </section>
+    <section id="estrutura-condicional">
+        <h2> Estrutura condicional</h2>
+        <h3>Desvio Condicional</h3>
+        <p>Também conhecido como Tomada de Decisão e Estrutura de Controle, tem como objetivo desviar o caminho de execução dos comandos de acordo com condição ou condições impostas juntamente com uso de operadores (quando necessário).</p>
+        <table class="tabela-operadores">
+            <tr>
+                <th>Operadores relacionais</th>
+                <th> Operadores Logicos</th>
+            </tr>
+            <tr>
+                <td><mark>></mark> maior</td>
+                <td><mark>e</mark> conjunção</td>
+            </tr>
+            <tr>
+                <td><mark>>=</mark> maior ou igual</td>
+                <td><mark>ou</mark> disjunção</td>
+            </tr>
+            <tr>
+                <td><mark><</mark> menor</td>
+                <td><mark>não</mark> negação</td>
+            </tr>
+             <tr>
+                <td><mark><=</mark> menor ou igual</td>
+            </tr>
+            <tr>
+                <td><mark>=</mark> igual</td>
+            </tr>
+            <tr>
+                <td><mark><></mark> diferente</td>
+            </tr>
+        </table>
+        <h3>Há alguns tipos de Desvio Condicional:</h3>
+        <ul>
+            <li>Simples (um único caminho)</li>
+            <li>Composto (dois caminhos)</li>
+            <li>Encadeado (diversos caminhos - um dentro do outro)</li>
+            <li>Múltipla escolha (diversos caminhos separados)</li>
+        </ul>
+        <h4>Desvio Condicional Simples</h4>
+        <p>O desvio condicional simples é contido de uma ou mais condições e um <i><mark>único caminho</mark></i> apenas caso a condição (ou condições) seja satisfeita.</p>
+        <div class="codigo">
+            <pre><code>
+                <span>Se</span> <span class="azul">(condição/condições)</span> <strong>então</strong>
+                    <span class="azul-escuro">comandos...</span>
+                <span>Fimse</span>
+            </code></pre>
+        </div>
+        <h4>Desvio Condicional Composto</h4>
+        <p>O Desvio Condicional composto é contido por uma ou mais condições e <i><mark>dois caminhos</mark></i> a seguir, ou seja, se verdadeiro toma-se o caminho ENTAO, se falso, toma-se o caminho SENAO.</p>
+        <div class="codigo">
+            <pre><code>
+                <span>Se</span> <span class="azul">(condição/condições)</span> <strong>então</strong>
+                    <span class="azul-escuro">comandos...</span>
+                <span>Senao</span>
+                    <span class="azul-escuro">comandos...</span>
+                <span>Fimse</span>
+            </code></pre>
+        </div>
+        <h4>Desvio Condicional Encadeado</h4>
+        <p>Tanto no desvio simples quanto no composto, podemos utilizar, se necessário for, desvio condicional encadeado, ou seja, a resultante de uma condição (ENTAO ou SENAO) pode ser outra condição. Exemplo:</p>
+        <div class="codigo">
+            <pre><code>
+                <span>Se</span> <span class="azul">(condição/condições)</span> <b>então</b>
+                    <span class="azul-escuro">comandos...</span>
+                <span class="verde">Se</span> <span class="vermelho">(condição/condições)</span> <span class="verde">entao</span>
+                    <span class="azul-escuro">comandos...</span>
+                <span class="verde">senao</span>
+                    <span class="azul-escuro">comandos...</span>
+                <span class="verde">Fimse</span>
+                <span>Fimse</span>
+            </code></pre>
+        </div>
+        <h4>Desvio Condicional de Múltipla Escolha</h4>
+        <p>Quando for necessário fazer vários testes para uma variável, podemos utilizar este tipo de desvio. Exemplo</p>
+        <div class="codigo">
+            <pre><code>
+                <span>Escolha</span> <span class="azul">(x)</span>
+                <span class="verde">Caso 1</span>
+                    <span class="azul-escuro">comandos...</span>
+                <span class="verde">Caso 2</span>
+                    <span class="azul-escuro">comandos...</span>
+                <span>Fimescolha</span>
+            </code></pre>
+        </div>
+    </section>
+    <section id="laços-de-repetição">
+        <h2> Laços de repetição</h2>
+        <h3>O que são laços de repetição?</h3>
+        <p>Estruturas que permitem executar um conjunto de instruções diversas vezes.</p>
+        <h3>Quando usar os laços de repetições?</h3>
+        <p>Utilizamos LAÇOS DE REPETIÇÃO quando precisamos repetir tarefas até que:</p>
+        <ul>
+        <li>uma condição (ou conjunto de condições) seja atendida.</li>
+        <li>ou por um número definido de vezes.</li>
+        </ul>
+        <h3>Vantagens do uso do laço de repetição</h3>
+        <ul>
+            <li>Evitam repetição de código</li>
+            <li>Facilitam manutenção e clareza</li>
+            <li>Podem trabalhar com quantidade fixa ou variável de repetições.</li>
+        </ul>
+        <h3>Tipos de laços de repetição:</h3>
+        <ol>
+            <li>REPITA ... ATE - executa primeiro, testa depois (pelo menos uma vez)</li>
+            <li>ENQUANTO...FAÇA - testa primeiro, executa depois (pode não executar nenhuma vez)</li>
+            <li>PARA - Repetição controlada por um contador (número conhecido de repetições)</li>
+        </ol>
+        <h4>Repita...ATE</h4>
+        <p>Na condição (ou condições) utilizaremos os operadores relacionais (>, >=, <, <=, =, <>) e os operadores lógicos (e, ou, não).</p>
+        <div class="codigo">
+            <pre><code>
+                <span>Repita</span>
+                <span class="verde">codigo...</span>
+                <span>Ate</span> <span class="azul">(Condição)</span>
+            </code></pre>
+        </div>
+        <p>A condição é o final do laço de repetição, ou seja, executa primeiro, testa depois.</p>
+        <h4>Enquanto...FACA</h4>
+        <div class="codigo">
+            <code><pre>
+                <span>Enquanto</span> <span class="azul">(condição)</span> <span>Faca</span>
+                <span class="verde">codigo...</span>
+                <span>Fimenquanto</span>
+            </pre></code>
+        </div>
+        <p>A condição é no início do laço, ou seja, testa antes, executa depois.</p>
+        <h4>Para</h4>
+        <div class="codigo">
+            <pre><code>
+                <span>Para</span> <span class="azul">(inicio)</span> de <span class="vermelho">inicio</span> ate <span class="vermelho">fim</span> passo <span class="azul-escuro">(incremento)</span> Faca
+                <span class="verde">codigo...</span>
+                <span>Fimpara</span>
+            </code></pre>
+        </div>
+        <ol>
+            <li>Variável de controle (inteiro)</li>
+            <li>Valor inicial da variável de controle</li>
+            <li>Valor final da variável de controle</li>
+            <li>Passo do incremento da variável de controle (opcional)</li>
+        </ol>
+        <h4>Resumo</h4>
+        <p>REPITA..ATE e ENQUANTO..FACA, embora possam ser utilizados para laços de quantidade definida, são ideais para validação de dados, porque eles repetem até que uma condição lógica seja satisfeita.<br>
+            PARA é indicado para repetições que sabemos um determinado número de vezes ao qual o laço será executado.</p>
+    </section>
+    </div>
+</body>
+<footer class="rodape">
+    <h3>Samuel Hungaro da Silva - 2026</h3>
+</footer>
+</html>
