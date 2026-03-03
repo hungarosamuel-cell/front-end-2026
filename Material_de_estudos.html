@@ -2,6 +2,10 @@
 <html lang="pt_br">
 <head>
     <style>
+	html{
+        scroll-behavior: smooth;
+        transition: 15s;
+    }
     body{
         margin: 0;
         font-family: 'Segoe UI';
@@ -131,6 +135,36 @@
     .verde{ color: lightgreen;}
     .vermelho{ color: lightcoral;}
     .azul-escuro{color: rgb(22, 22, 213);}
+	form{
+        background-color: white;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 5px;
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+    form label{
+        display: block;
+        margin-bottom: 10px;
+        color: black;
+    }
+    input[type=text], textarea {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+			font-size: 16px;
+	}
+    input[type=submit] {
+        background-color: #6094ef;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
     .rodape{
         background: linear-gradient(135deg, #3b6fd9, #6094ef);
         color: white;
@@ -158,7 +192,8 @@
     <nav>
         <a href="#entrada-processamento-saida" target="_self">Entrada, processamento e saída</a>
         <a href="#estrutura-condicional" target="_self">Estrutura condicional</a>
-        <a href="#laços-de-repetição" target="_self">Laços de repetição</a>         
+        <a href="#laços-de-repetição" target="_self">Laços de repetição</a>     
+        <a href="#exercicios" target="_self"> Exercícios</a>      
     </nav>
     <div id="main">
     <section id="entrada-processamento-saida">
@@ -436,3 +471,4 @@
     <h3>Samuel Hungaro da Silva - 2026</h3>
 </footer>
 </html>
+
