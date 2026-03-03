@@ -1,83 +1,58 @@
-<!DOCTYPE html>
-<html>
+<!DOCTPE html>
+<html lang="pt-BR">
 <head>
-	<title>Formulário de Satisfação do Atendimento</title>
-	<style>
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial, sans-serif;
-		}
-
-		h1 {
-			color: #333;
-			text-align: center;
-		}
-
-		form {
-			background-color: #fff;
-			max-width: 600px;
-			margin: 0 auto;
-			padding: 20px;
-			border-radius: 5px;
-			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-		}
-
-		label {
-			display: block;
-			margin-bottom: 10px;
-			color: #333;
-			font-weight: bold;
-		}
-
-		input[type=text], textarea {
-			width: 100%;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 3px;
-			box-sizing: border-box;
-			margin-bottom: 20px;
-			font-size: 16px;
-		}
-
-		textarea {
-			height: 100px;
-		}
-
-		input[type=submit] {
-			background-color: #4CAF50;
-			color: #fff;
-			border: none;
-			padding: 10px 20px;
-			border-radius: 3px;
-			cursor: pointer;
-			font-size: 16px;
-		}
-
-		input[type=submit]:hover {
-			background-color: #45a049;
-		}
-	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="widht=device-widht, inital-scale=1.0">
+	<title> Portfólio - Aluno Samuel </title>
 </head>
 <body>
-	<h1>Formulário de Satisfação do Atendimento</h1>
+	<div class="header">
+		<header>
+			<h1> Meu portifólio </h1>
+			<p> Bem vindos a minha pagina</p>
+			<hr></hr>
+		</header>
+	</div>
+	<nav>
+		<a href="#sobre" target="_self">Sobre</a>
+		<a href="#projeto" target="_self">Projetos</a>
+		<a href="#contato" target="_self">Contato</a>
+	</nav>
+<div id=main>
+<section id="sobre">
+	<h3> O Aluno Samuel Hungaro </h3>
+	<p> Sou eu <b> o melhor pivô de maringa e regiao</b> <strong> e pika pra carai </strong> profissional
+	<i>LDB</i> e <mark> quadrinha</mark><a href="https://lnb.com.br/atletas/samuel-hungaro-da-silva/" target="_blank"> Comprovação </a></p>
+	<p> Sou composto por cafeína e paixao</p>
+</selection>
+<selection id="projetos">
+	<articule>
+		<h4> Minha casa minha vida</h4>
+		<p> n foi o 9 dedos</p>
+	</articule>
+	<articule>
+		<h4> Projetinho verão</h4>
+	</articule>
+</selection>
+<selection id="contato">
 	<form>
-		<label for="nome">Nome completo:</label>
-		<input type="text" id="nome" name="nome" required>
+	<fieldset>
 
-		<label for="email">E-mail:</label>
-		<input type="text" id="email" name="email" required>
+	<legend> Envie o seu feedback✓</legend>
+	<label for="name"> Nome</label><br>
+	<input type="text" id="nome" name="nome"><br><br>
 
-		<label for="telefone">Telefone:</label>
-		<input type="text" id="telefone" name="telefone" required>
+	<label> Gênero</label><br>
+	<input type="radio" name="gênero">Masculino
+	<input type="radio" name="gênero">Feminino<br><br>
 
-		<label for="avaliacao">Como você avalia o atendimento recebido?</label>
-		<textarea id="avaliacao" name="avaliacao" required></textarea>
+	<label>Interesse</label><br>
+	<input type="checkbox" >Dinheiro
+	<input type="checkbox" >Viagem	
+	<input type="checkbox" >Carro<br><br>
 
-		<label for="sugestoes">Você tem alguma sugestão para melhorarmos nosso atendimento?</label>
-		<textarea id="sugestoes" name="sugestoes"></textarea>
-
-		<input type="submit" value="Enviar">
+	</fieldset>
 	</form>
+</selection>
 </body>
-
 </html>
