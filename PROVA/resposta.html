@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Grupos e Fatos - Copa do Mundo</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e8f5e9;
+            font-family: Arial, sans-serif;
+            color: #222;
+            padding: 30px;
+        }
+
+        #cabecalho {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #1b5e20;
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 3px solid #a5d6a7;
+        }
+
+        #cabecalho h1 {
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+        }
+
+        #cabecalho h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #c8e6c9;
+        }
+
+        .container-grupos {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cartao {
+            background-color: #fff;
+            border: 2px solid #a5d6a7;
+            border-radius: 12px;
+            padding: 24px;
+            width: 280px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .cartao h3 {
+            font-size: 1.4rem;
+            color: #1b5e20;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #c8e6c9;
+            padding-bottom: 6px;
+        }
+
+        .cartao h4 {
+            font-size: 1rem;
+            color: #388e3c;
+            margin-bottom: 8px;
+        }
+
+        .cartao ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .cartao ul li {
+            background-color: #f1f8e9;
+            border: 1px solid #dcedc8;
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            color: #33691e;
+        }
+
+        .cartao details {
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .cartao details summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .cartao details p {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        #area-botao {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        #btn-proximo {
+            background-color: #1b5e20;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 32px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #btn-proximo:hover {
+            background-color: #2e7d32;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="cabecalho">
+        <h1>Copa do Mundo</h1>
+        <h3 id="subtitulo">Grupos e Fatos</h3>
+    </div>
+
+    <div class="container-grupos" id="container-grupos">
+
+        <div id="grupo-a" class="cartao">
+            <h3>🅰️ Grupo A</h3>
+            <h4>Seleções</h4>
+            <ul>
+                <li>México</li>
+                <li>África do Sul</li>
+                <li>Coreia do Sul</li>
+                <li>República Tcheca</li>
+            </ul>
+            <details>
+                <summary>Saiba Mais</summary>
+                <p>O jogo de abertura será México x África do Sul. Confrontos entre Coreia do Sul e seleções europeias já ocorreram em várias Copas, com histórico equilibrado.</p>
+            </details>
+        </div>
+
+        <div id="grupo-b" class="cartao">
+            <h3>🅱️ Grupo B</h3>
+            <h4>Seleções</h4>
+            <ul>
+                <li>Canadá</li>
+                <li>Suíça</li>
+                <li>Catar</li>
+                <li>Vaga Europeia (Bósnia)</li>
+            </ul>
+            <details>
+                <summary>Saiba Mais</summary>
+                <p>O Canadá joga em casa, fator importante de desempenho. Catar e Suíça já se enfrentaram recentemente em amistosos internacionais.</p>
+            </details>
+        </div>
+
+        <div id="grupo-c" class="cartao">
+            <h3>🅲 Grupo C</h3>
+            <h4>Seleções</h4>
+            <ul>
+                <li>Brasil</li>
+                <li>Marrocos</li>
+                <li>Haiti</li>
+                <li>Escócia</li>
+            </ul>
+            <details>
+                <summary>Saiba Mais</summary>
+                <p>Brasil, Marrocos e Escócia já dividiram grupo em 1998. Brasil nunca perdeu para a Escócia em Copas.</p>
+            </details>
+        </div>
+
+    </div>
+
+    <div id="area-botao">
+        <button id="btn-proximo" onclick="alternarGrupos()">Próximo</button>
+    </div>
+
+    <script>
+
+        var paginaAtual = 1;
+
+        var paginas = {
+            1: {
+                subtitulo: "Grupos A, B e C",
+                grupos: [
+                    {
+                        id: "grupo-a",
+                        titulo: "🅰️ Grupo A",
+                        selecoes: ["México", "África do Sul", "Coreia do Sul", "República Tcheca"],
+                        fato: "O jogo de abertura será México x África do Sul. Confrontos entre Coreia do Sul e seleções europeias já ocorreram em várias Copas, com histórico equilibrado."
+                    },
+                    {
+                        id: "grupo-b",
+                        titulo: "🅱️ Grupo B",
+                        selecoes: ["Canadá", "Suíça", "Catar", "Vaga Europeia (Bósnia)"],
+                        fato: "O Canadá joga em casa, fator importante de desempenho. Catar e Suíça já se enfrentaram recentemente em amistosos internacionais."
+                    },
+                    {
+                        id: "grupo-c",
+                        titulo: "🅲 Grupo C",
+                        selecoes: ["Brasil", "Marrocos", "Haiti", "Escócia"],
+                        fato: "Brasil, Marrocos e Escócia já dividiram grupo em 1998. Brasil nunca perdeu para a Escócia em Copas."
+                    }
+                ]
+            },
+            2: {
+                subtitulo: "Grupos D, E e F",
+                grupos: [
+                    {
+                        id: "grupo-d",
+                        titulo: "🅳 Grupo D",
+                        selecoes: ["Estados Unidos", "Paraguai", "Austrália", "Turquia"],
+                        fato: "Os EUA jogam em casa, vantagem histórica em Copas. Austrália enfrenta frequentemente seleções sul-americanas em torneios."
+                    },
+                    {
+                        id: "grupo-e",
+                        titulo: "🅴 Grupo E",
+                        selecoes: ["Alemanha", "Equador", "Costa do Marfim", "Curaçao"],
+                        fato: "Alemanha costuma dominar fases de grupos. Equador e Costa do Marfim têm estilos físicos semelhantes."
+                    },
+                    {
+                        id: "grupo-f",
+                        titulo: "🅵 Grupo F",
+                        selecoes: ["Holanda", "Japão", "Tunísia", "Suécia"],
+                        fato: "Holanda e Japão já se enfrentaram em fases eliminatórias. Tunísia e Suécia têm histórico recente em Copas."
+                    }
+                ]
+            }
+        };
+
+        function alternarGrupos() {
+
+            if (paginaAtual === 1) {
+                paginaAtual = 2;
+                document.getElementById("btn-proximo").textContent = "Anterior";
+            } else {
+                paginaAtual = 1;
+                document.getElementById("btn-proximo").textContent = "Próximo";
+            }
+
+            var dados = paginas[paginaAtual];
+            var container = document.getElementById("container-grupos");
+
+            document.getElementById("subtitulo").textContent = dados.subtitulo;
+
+            container.innerHTML = "";
+
+            for (var i = 0; i < dados.grupos.length; i++) {
+
+                var g = dados.grupos[i];
+
+                var itensLista = "";
+                for (var j = 0; j < g.selecoes.length; j++) {
+                    itensLista += "<li>" + g.selecoes[j] + "</li>";
+                }
+
+                var cartao = "<div id='" + g.id + "' class='cartao'>"
+                           + "<h3>" + g.titulo + "</h3>"
+                           + "<h4>Seleções</h4>"
+                           + "<ul>" + itensLista + "</ul>"
+                           + "<details>"
+                           + "<summary>Saiba Mais</summary>"
+                           + "<p>" + g.fato + "</p>"
+                           + "</details>"
+                           + "</div>";
+
+                container.innerHTML += cartao;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
