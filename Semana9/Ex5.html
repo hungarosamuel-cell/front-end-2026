@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ex5</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .todo-app {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .classe-riscado{
+            text-decoration: line-through;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="todo-app">
+        <h2>Infinity Bank</h2>
+        <h3>Lista de Convidados VIP</h3>
+
+        <input type="text" id="nomeConvidado" placeholder="Digite o nome">
+        <button id="adicionar">Adicionar</button>
+
+        <ul id="lista"></ul>
+    </div>
+    <script>
+        const convidados = [];
+
+        const inputNome = document.getElementById("nomeConvidado");
+        const botaoAdicionar = document.getElementById("adicionar");
+        const lista = document.getElementById("lista");
+
+        botaoAdicionar.addEventListener("click", function () {
+            const nome = inputNome.value.trim();
+
+            if (nome === "") {
+                alert("Digite o nome do convidado.");
+                return;
+            }
+
+            convidados.push(nome);
+
+            inputNome.value = "";
+
+            mostrarLista();
+        });
+
+        function mostrarLista() {
+            lista.innerHTML = "";
+
+            for (let i = 0; i < convidados.length; i++) {
+                const item = document.createElement("li");
+
+                const spanNome = document.createElement("span");
+                spanNome.textContent = convidados[i];
+
+                const divBotoes = document.createElement("div");
+                divBotoes.className = "botoes";
+
+                const botaoConcluir = document.createElement("button");
+                botaoConcluir.textContent = "Concluir";
+
+                botaoConcluir.addEventListener("click", function () {
+                    spanNome.classList.toggle("classe-riscado");
+                });
+
+                const botaoEditar = document.createElement("button");
+                botaoEditar.textContent = "Editar";
+
+                botaoEditar.addEventListener("click", function () {
+                    const novoNome = prompt("Digite o novo nome:");
+
+                    if (novoNome !== null && novoNome.trim() !== "") {
+                        convidados[i] = novoNome.trim();
+                        mostrarLista();
+                    }
+                });
+
+                const botaoExcluir = document.createElement("button");
+                botaoExcluir.textContent = "Excluir";
+
+                botaoExcluir.addEventListener("click", function () {
+                    convidados.splice(i, 1);
+                    mostrarLista();
+                });
+
+                divBotoes.appendChild(botaoConcluir);
+                divBotoes.appendChild(botaoEditar);
+                divBotoes.appendChild(botaoExcluir);
+
+                item.appendChild(spanNome);
+                item.appendChild(divBotoes);
+
+                lista.appendChild(item);
+            }
+        }
+    </script>
+</body>
+
+</html>

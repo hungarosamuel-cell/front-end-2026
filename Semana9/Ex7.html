@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ex7</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .todo-app {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="todo-app">
+        <h2>Analisador de Cartão</h2>
+
+        <input type="text" id="numeroCartao" maxlength="19" placeholder="Digite o número do cartão">
+
+        <br>
+
+        <button id="analisar">Analisar Cartão</button>
+
+        <div id="resultado"></div>
+    </div>
+    <script>
+
+        const botao = document.getElementById("analisar");
+
+        botao.addEventListener("click", function () {
+            let numero = document.getElementById("numeroCartao").value;
+
+            numero = numero.replace(/\D/g, "");
+
+            const resultado = document.getElementById("resultado");
+
+            if (numero.length < 13 || numero.length > 16) {
+                resultado.innerHTML = `
+                    <p class="invalido">Status: Inválido</p>
+                    <p>Erro: O cartão precisa ter entre 13 e 16 dígitos.</p>
+                `;
+                return;
+            }
+
+            const status = validarLuhn(numero);
+            const bandeira = descobrirBandeira(numero);
+            const categoria = descobrirCategoriaSetor(numero);
+            const banco = descobrirBancoEmissor(numero);
+            const iin = numero.substring(0, 8);
+
+            let classeStatus = "";
+
+            if (status === true) {
+                classeStatus = "valido";
+            } else {
+                classeStatus = "invalido";
+            }
+
+            resultado.innerHTML = `
+                <h3>Painel de Info</h3>
+                <p class="${classeStatus}">Status: ${status ? "Válido" : "Inválido"}</p>
+                <p>Bandeira: ${bandeira}</p>
+                <p>Categoria de Setor: ${categoria}</p>
+                <p>Banco Emissor: ${banco}</p>
+                <p>IIN Identificado: ${iin}</p>
+            `;
+        });
+
+        function validarLuhn(numero) {
+            const digitosInvertidos = numero.split("").reverse();
+
+            let soma = 0;
+
+            for (let i = 0; i < digitosInvertidos.length; i++) {
+                let digito = Number(digitosInvertidos[i]);
+
+                if (i % 2 === 1) {
+                    digito = digito * 2;
+
+                    if (digito > 9) {
+                        digito = digito - 9;
+                    }
+                }
+
+                soma = soma + digito;
+            }
+
+            return soma % 10 === 0;
+        }
+
+        function descobrirBandeira(numero) {
+            const doisDigitos = Number(numero.substring(0, 2));
+            const quatroDigitos = Number(numero.substring(0, 4));
+
+            if (numero[0] === "4") {
+                return "Visa";
+            }
+
+            if (
+                (doisDigitos >= 51 && doisDigitos <= 55) ||
+                (quatroDigitos >= 2221 && quatroDigitos <= 2720)
+            ) {
+                return "MasterCard";
+            }
+
+            if (doisDigitos === 34 || doisDigitos === 37) {
+                return "American Express";
+            }
+
+            if (
+                doisDigitos === 60 ||
+                doisDigitos === 65 ||
+                quatroDigitos === 6362
+            ) {
+                return "Elo / Discover";
+            }
+
+            return "Bandeira não identificada";
+        }
+
+        function descobrirCategoriaSetor(numero) {
+            const primeiroDigito = numero[0];
+
+            switch (primeiroDigito) {
+                case "1":
+                case "2":
+                    return "Companhias aéreas";
+
+                case "3":
+                    return "Viagens e entretenimento";
+
+                case "4":
+                case "5":
+                    return "Banco e setor financeiro";
+
+                case "6":
+                    return "Comércio e bancos";
+
+                case "7":
+                    return "Petróleo e combustíveis";
+
+                case "8":
+                    return "Telecomunicações e saúde";
+
+                case "9":
+                    return "Uso nacional";
+
+                default:
+                    return "Categoria não identificada";
+            }
+        }
+
+        function descobrirBancoEmissor(numero) {
+            const iin = numero.substring(0, 8);
+
+            if (iin.startsWith("400000")) {
+                return "Banco Visa Simulado";
+            }
+
+            if (iin.startsWith("510000")) {
+                return "Banco Master Simulado";
+            }
+
+            if (iin.startsWith("340000")) {
+                return "Banco American Express Simulado";
+            }
+
+            if (iin.startsWith("650000")) {
+                return "Banco Elo Simulado";
+            }
+
+            return "Banco emissor não identificado";
+        }
+    </script>
+</body>
+
+</html>
