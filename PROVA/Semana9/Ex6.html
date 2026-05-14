@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ex6</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .todo-app {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="todo-app">
+        <h2>Calculadora de Evento</h2>
+
+        <label>Escolha o pacote:</label>
+        <select id="pacote">
+            <option value="50">Standard - R$ 50,00 por pessoa</option>
+            <option value="80">Premium - R$ 80,00 por pessoa</option>
+            <option value="120">Infinity Deluxe - R$ 120,00 por pessoa</option>
+        </select>
+
+        <label>Quantidade de pessoas:</label>
+        <input type="number" id="quantidade" placeholder="Digite a quantidade">
+
+        <button id="calcular">Calcular Orçamento</button>
+
+        <div id="resultado"></div>
+    </div>
+    <script>
+
+        const botao = document.getElementById("calcular");
+
+        botao.addEventListener("click", function () {
+            const valorPacote = Number(document.getElementById("pacote").value);
+            const quantidade = Number(document.getElementById("quantidade").value);
+            const resultado = document.getElementById("resultado");
+
+            if (quantidade <= 0) {
+                resultado.innerHTML = "<p style='color: red;'>Digite uma quantidade válida de pessoas.</p>";
+                return;
+            }
+
+            const custoBruto = valorPacote * quantidade;
+
+            const taxaServico = custoBruto * 0.10;
+
+            const valorComTaxa = custoBruto + taxaServico;
+
+            let desconto = 0;
+
+            if (quantidade > 100) {
+                desconto = valorComTaxa * 0.05;
+            }
+
+            const totalFinal = valorComTaxa - desconto;
+
+            resultado.innerHTML = `
+                <h3>Resumo do Orçamento</h3>
+                <p>Custo Bruto: R$ ${custoBruto.toFixed(2)}</p>
+                <p>Taxa de Serviço: R$ ${taxaServico.toFixed(2)}</p>
+                <p>Desconto Aplicado: R$ ${desconto.toFixed(2)}</p>
+                <p class="total">Total Final: R$ ${totalFinal.toFixed(2)}</p>
+            `;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ex3</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .todo-app {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="todo-app">
+        <label>Nome do Aluno</label>
+        <input type="text" id="nome" placeholder="Digite o nome">
+
+        <br>
+
+        <label>Nota 1:</label>
+        <input type="number" id="nota1" placeholder="Digite a nota 1">
+        <br><label>Nota 2:</label>
+        <input type="number" id="nota2" placeholder="Digite a nota 2">
+        <br><label>Nota 3:</label>
+        <input type="number" id="nota3" placeholder="Digite a nota 3">
+        <br>
+        <button id="calcular">calcular media</button>
+        <p id="resultado"></p>
+    </div>
+    <script>
+
+        const botao = document.getElementById("calcular");
+        botao.addEventListener("click", function () {
+            const nome = document.getElementById("nome").value;
+
+            const nota1 = Number(document.getElementById("nota1").value);
+            const nota2 = Number(document.getElementById("nota2").value);
+            const nota3 = Number(document.getElementById("nota3").value);
+
+            const resultado = document.getElementById("resultado");
+
+            const media = (nota1 + nota2 + nota3) / 3;
+
+            if (media >= 7 && media <= 10) {
+                resultado.textContent = nome + "Aprovado! Média: " + media.toFixed(2);
+                resultado.style.color = "blue";
+                resultado.style.fontWeight = "bold";
+            } else if (media >= 4 && media < 7) {
+                const falta = 10 - media;
+
+                resultado.textContent = nome + " ficou de Exame! Média: " + media.toFixed(2) +
+                    ". Faltam " + falta.toFixed(2) + " pontos para chegar em 10.";
+
+                resultado.style.color = "green";
+                resultado.style.fontWeight = "bold";
+            } else {
+                resultado.textContent = nome + "Reprovado! Média: " + media.toFixed(2);
+                resultado.style.color = "red";
+                resultado.style.fontWeight = "bold";
+            }
+        });
+    </script>
+</body>
+
+</html>
